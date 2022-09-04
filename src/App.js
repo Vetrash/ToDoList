@@ -29,10 +29,12 @@ const App = () => {
     const newWidth = Number(width) + e.nativeEvent.offsetX;// получаем обновленую ширину блока
     if (Math.abs(e.nativeEvent.offsetX) < 50) {
       // после drop offsetX принимает большие значения, таким способом ограничиваю чувствительность
+      const windowInnerWidth = window.innerWidth // ширину окна
       if (newWidth < 400) {
         // блок не должен быть менее 400px
         todolist.current.style.width = '400px';
-      } else {
+      } else if ((newWidth / windowInnerWidth) < 0.7){
+        console.log((newWidth / windowInnerWidth))
         todolist.current.style.width = `${Number(width) + e.nativeEvent.offsetX}px`;// изменяем ширину блока
       }
     }

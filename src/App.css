@@ -86,12 +86,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 95%;
 }
 .redactorToDO{
-  width: 67vw;
+  
   display: flex;
-  justify-content: center;  
+  justify-content: center;
+  flex-shrink: 1;
+  flex-grow: 1; 
 }
 .redactorConteiner p{
   margin-bottom: 0px;
