@@ -1,22 +1,35 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { removeToDO, redactToDO } from '../store/todoSlice.js';
-/* eslint-disable */
+
 const ToDoItem = (props) => {
-  const dispatch = useDispatch();
   const {
-    id, selected, topic, status,
+    id, selected, topic, status, redactedItem,
+    todoItems, setRedactedItem, setTodoItems, setAlertLog,
   } = props;
-  //обертка для функции удаления
+
+  // обертка для функции удаления
   const deletitem = (e) => {
-    dispatch(removeToDO(e.target.dataset.id));
+    const selectId = Number(e.target.dataset.id);
+    if (selectId === redactedItem.id) {
+      // проверяем что удаляемый объект сейчас не редактируется
+      alert('Нельзя удалить редактируемый объект');
+    } else {
+      // находим индекс удаляемого элемента
+      const indexDeletItem = todoItems.findIndex((x) => x.id === selectId);
+      // создаем новый масив без удаляемого объекта
+      const NewtodoItems = todoItems.filter((elem, index) => index !== indexDeletItem);
+      setTodoItems(NewtodoItems);
+    }
   };
-  //обертка для функции редактирования
+  // обертка для функции редактирования
   const redactitem = (e) => {
-    dispatch(redactToDO(e.target.dataset.id));
+    const Newid = Number(e.target.dataset.id);
+    setAlertLog('');
+    const indexRedactItem = todoItems.findIndex((x) => x.id === Newid);
+    const redactItem = { ...todoItems[indexRedactItem] };
+    setRedactedItem(redactItem);
   };
-  const selectedClass = selected === true ? 'selected' : '';//проверка на выделение конкретного дела
-  //отрисовка элемента списка
+  const selectedClass = selected === true ? 'selected' : '';// проверка на выделение конкретного дела
+  // отрисовка элемента списка
   return (
     <li className={`toDoItem ${status} ${selectedClass}`}>
       <div className="infoToDo">
