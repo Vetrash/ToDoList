@@ -34,7 +34,6 @@ const App = () => {
         // блок не должен быть менее 400px
         todolist.current.style.width = '400px';
       } else if ((newWidth / windowInnerWidth) < 0.7){
-        console.log((newWidth / windowInnerWidth))
         todolist.current.style.width = `${Number(width) + e.nativeEvent.offsetX}px`;// изменяем ширину блока
       }
     }
