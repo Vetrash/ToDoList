@@ -8,13 +8,13 @@ import App from './App.js';
 import store from './store/index.js';
 /* eslint-disable */
 const config = {
-  apiKey: secrets.API_KEY,
+  apiKey: 'API_KEY',
   authDomain: 'todo-list-36d26.firebaseapp.com',
   databaseURL: 'https://todo-list-36d26-default-rtdb.firebaseio.com',
   projectId: 'todo-list-36d26',
   storageBucket: 'todo-list-36d26.appspot.com',
-  messagingSenderId: secrets.SENDER_ID,
-  appId: secrets.APP_ID,
+  messagingSenderId: 'SENDER_ID',
+  appId: 'APP_ID',
 };
 /* eslint-enable */
 initializeApp(config);
