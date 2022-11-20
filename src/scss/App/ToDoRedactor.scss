@@ -1,0 +1,116 @@
+.redactorConteiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 95%;
+    max-width: 320px;
+  }
+  .redactorToDO{
+    display: flex;
+    justify-content: center;
+    flex-shrink: 1;
+    flex-grow: 1; 
+    padding-bottom: 20px;
+    min-width: 320px;
+  }
+  .redactorConteiner p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 5px;
+  }
+  .redactorConteiner input{
+    background: $collorThemeMain_2;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    padding-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+  }
+  .redactorConteiner textarea{
+    background: $collorThemeMain_2;
+    height: calc( 100vh - 400px);
+    max-height: 200px;
+    border-radius: 25px;
+    padding: 15px;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    resize: none;
+    scroll-padding-right:10px
+  }
+  textarea::-webkit-scrollbar {
+    display: none;
+  }
+  .redactorConteiner select{
+    background: $collorThemeMain_2;
+    height: 50px;
+    border-radius: 25px;
+    padding-left: 15px;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    appearance: none;
+    background-image: url('../../img/arrow_drop_down.svg');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: calc(50%);
+    cursor: pointer;
+    width: 100%;  
+  }
+  
+  .redactor-control {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+  }
+  .redactor-control button{
+    background: $collorThemeMain_3;
+    height: 50px;
+    border-radius: 25px;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: $collorTextLight;
+    border: none;
+  }
+  
+  .input__date {
+    width: calc(100% - 15px);
+  }
+
+ .input__date::-webkit-calendar-picker-indicator {
+   padding-right: 10px;
+   cursor: pointer;
+  }
+  
+.alertlog{
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: $collorOverdueMain;
+  padding-top: 10px;
+}
+
+
+
+.flexConteiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 10px;
+  @media (max-width: 650px ){
+    flex-direction: column;
+  }
+}
+
+.flexConteiner__item {
+  width: 48%;
+  flex: 1 1 auto;
+  @media (max-width: 650px ){
+    width: 100%;
+  }
+}

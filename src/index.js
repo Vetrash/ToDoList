@@ -1,18 +1,29 @@
-/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { initializeApp } from 'firebase/app';
+import { Provider } from 'react-redux';
+import './scss/index.scss';
 import App from './App.js';
-import reportWebVitals from './reportWebVitals.js';
+
+import store from './store/index.js';
+/* eslint-disable */
+const config = {
+  apiKey: secrets.API_KEY,
+  authDomain: 'todo-list-36d26.firebaseapp.com',
+  databaseURL: 'https://todo-list-36d26-default-rtdb.firebaseio.com',
+  projectId: 'todo-list-36d26',
+  storageBucket: 'todo-list-36d26.appspot.com',
+  messagingSenderId: secrets.SENDER_ID,
+  appId: secrets.APP_ID,
+};
+/* eslint-enable */
+initializeApp(config);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

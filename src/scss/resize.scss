@@ -1,0 +1,29 @@
+.resizeBlock{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 25px;
+    min-width: 25px;
+    right: -2px;
+    height: 100%;
+    @media (max-width: 800px ){
+      display: none;
+    }
+  }
+  
+  .resizeBlock__arrow {
+    height: 20px;
+    padding-right: 5px;
+  }
+  
+  .resizeBlock__conteiner{
+    position: absolute; 
+    right: 5px;  
+  }
+  .resizeBlock__dragLine{  
+    width: 20px;
+    min-width: 20px;
+    height: 100%;
+    cursor: col-resize;
+    opacity: 0;  
+  }

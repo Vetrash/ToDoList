@@ -1,0 +1,64 @@
+@import '../theme.scss';
+@import '../scrollStyle.scss';
+@import 'FileMenu.scss';
+@import 'ToDoItem.scss';
+@import '../resize.scss';
+@import 'searchToDo.scss';
+@import 'ToDoRedactor.scss';
+
+
+body {
+  background: $collorThemeMain_1;
+}
+.todolist-conteiner {
+  display: flex;  
+  position: relative;
+  @media (max-width: 600px ){
+    flex-direction: column;
+  }
+}
+
+.todolist-block {
+  background: $collorThemeMain_2; 
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;  
+  @media (max-width: 600px ){
+    min-height: 100vh;
+  }
+}
+
+.title {
+  background: $collorThemeMain_3;
+  color: $collorTextLight;
+  height: 50px;
+  border-radius: 0px 0px 25px 25px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  width: 100%;  
+}
+
+.elem_activ {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.btn {
+  background: $collorThemeMain_3;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: $collorTextLight;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  width: 100%;
+}
