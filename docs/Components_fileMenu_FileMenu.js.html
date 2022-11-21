@@ -1,4 +1,32 @@
-import React, { useState } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/fileMenu/FileMenu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/fileMenu/FileMenu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
 import axios from 'axios';
 import cn from 'classnames';
 import _ from 'lodash';
@@ -36,9 +64,9 @@ const FileMenu = () => {
       toastOverfloy();
       return;
     }
-    const emptyPosition = 10 - uploadFile.length < 0 ? 0 : 10 - uploadFile.length;
+    const emptyPosition = 10 - uploadFile.length &lt; 0 ? 0 : 10 - uploadFile.length;
     const redactFileList = [];
-    for (let i = 0; i < fileList.length; i += 1) {
+    for (let i = 0; i &lt; fileList.length; i += 1) {
       const isNameLoad = _.find(uploadFile, { name: fileList[i].name }) !== undefined;
       if (redactFileList.length === emptyPosition) break;
       if (!isNameLoad) {
@@ -104,17 +132,17 @@ const FileMenu = () => {
   const textLoadZone = () => {
     if (isDragOnLoadZone) {
       return (
-        <p>Отпустите файлы для загрузки</p>
+        &lt;p>Отпустите файлы для загрузки&lt;/p>
       );
     }
     return (
-      <>
-        <label className="loader__text" htmlFor="file-input">
+      &lt;>
+        &lt;label className="loader__text" htmlFor="file-input">
           Выбрать файл
-          <input className="hide uploadfile" id="file-input" type="file" name="file" multiple onChange={hendlerUpload} />
-        </label>
-        <span> или перетащите его сюда</span>
-      </>
+          &lt;input className="hide uploadfile" id="file-input" type="file" name="file" multiple onChange={hendlerUpload} />
+        &lt;/label>
+        &lt;span> или перетащите его сюда&lt;/span>
+      &lt;/>
     );
   };
   /**
@@ -124,34 +152,57 @@ const FileMenu = () => {
   const iconLoadZone = () => {
     if (isLoading) {
       return (
-        <img className="fileMenu__loader__img fileMenu__loader__twist" src="./img/loading.png" alt="" />
+        &lt;img className="fileMenu__loader__img fileMenu__loader__twist" src="./img/loading.png" alt="" />
       );
     }
-    return (<img className="fileMenu__loader__img" src="./img/download.png" alt="" />);
+    return (&lt;img className="fileMenu__loader__img" src="./img/download.png" alt="" />);
   };
 
   return (
-    <div
+    &lt;div
       className={cn('conteiner__FM', { elem_activ: isShovedFileMenu })}
       onDragOver={drag}
       onDrop={drop}
     >
-      <div className="fileMenu__back" />
-      <div className="fileMenu">
-        <button className="btn__cross" type="button" onClick={closer} aria-label="close menu" />
-        <div className="fileMenu__loader ">
-          <div className={cn('loader', 'loader__drag_line', { loader__drag_lineShow: isDragOnLoadZone })}>
+      &lt;div className="fileMenu__back" />
+      &lt;div className="fileMenu">
+        &lt;button className="btn__cross" type="button" onClick={closer} aria-label="close menu" />
+        &lt;div className="fileMenu__loader ">
+          &lt;div className={cn('loader', 'loader__drag_line', { loader__drag_lineShow: isDragOnLoadZone })}>
             {iconLoadZone()}
-            <div className="fileMenu__loader__text">
+            &lt;div className="fileMenu__loader__text">
               {textLoadZone()}
-            </div>
-          </div>
-        </div>
-        <div className="fileMenu__filelist">
-          <ListUploadFiles />
-        </div>
-      </div>
-    </div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="fileMenu__filelist">
+          &lt;ListUploadFiles />
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
   );
 };
 export default FileMenu;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#FileMenu">FileMenu</a></li><li><a href="global.html#ListTodoItems">ListTodoItems</a></li><li><a href="global.html#ListUploadFiles">ListUploadFiles</a></li><li><a href="global.html#SearchToDoItem">SearchToDoItem</a></li><li><a href="global.html#ToDoItem">ToDoItem</a></li><li><a href="global.html#ToDoRedactor">ToDoRedactor</a></li><li><a href="global.html#TodoMain">TodoMain</a></li><li><a href="global.html#nameSchema">nameSchema</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#toastAddToDo">toastAddToDo</a></li><li><a href="global.html#toastDeleteFile">toastDeleteFile</a></li><li><a href="global.html#toastDeleteToDo">toastDeleteToDo</a></li><li><a href="global.html#toastFound">toastFound</a></li><li><a href="global.html#toastLoadedEarlier">toastLoadedEarlier</a></li><li><a href="global.html#toastNotDelete">toastNotDelete</a></li><li><a href="global.html#toastNotFound">toastNotFound</a></li><li><a href="global.html#toastNotRedacted">toastNotRedacted</a></li><li><a href="global.html#toastOverdue">toastOverdue</a></li><li><a href="global.html#toastOverfloy">toastOverfloy</a></li><li><a href="global.html#toastRedacted">toastRedacted</a></li><li><a href="global.html#toastUpload">toastUpload</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Nov 21 2022 17:33:04 GMT+0300 (Москва, стандартное время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

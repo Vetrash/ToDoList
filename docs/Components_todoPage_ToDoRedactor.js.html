@@ -1,4 +1,32 @@
-import React, { useEffect } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/todoPage/ToDoRedactor.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/todoPage/ToDoRedactor.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import _ from 'lodash';
@@ -51,7 +79,7 @@ const ToDoRedactor = () => {
     const endDate = dayjs(deadline);
     const diffDate = endDate.diff(nowDate, 'day');
     const statusRed = () => {
-      if (diffDate < 0) {
+      if (diffDate &lt; 0) {
         if (status !== 'completed') return 'overdue';
         return status;
       }
@@ -100,67 +128,90 @@ const ToDoRedactor = () => {
   const styleWidth = isResizebleWidth ? '50%' : '100%';
 
   return (
-    <form className="redactorToDO" style={{ width: styleWidth }} onSubmit={(e) => { e.preventDefault(); }}>
-      <div className="redactorConteiner">
-        <p>Название задачи </p>
-        <input
+    &lt;form className="redactorToDO" style={{ width: styleWidth }} onSubmit={(e) => { e.preventDefault(); }}>
+      &lt;div className="redactorConteiner">
+        &lt;p>Название задачи &lt;/p>
+        &lt;input
           type="text"
           name="topic"
           onChange={formik.handleChange}
           value={formik.values.topic}
         />
-        <p>Описание задачи</p>
-        <textarea
+        &lt;p>Описание задачи&lt;/p>
+        &lt;textarea
           name="description"
           onChange={formik.handleChange}
           value={formik.values.description}
         />
-        <button type="button" className="btn" onClick={shovedFileMenu}>Работа с файлами</button>
-        <div className="flexConteiner">
-          <div className="flexConteiner__item">
-            <p>Статус задачи</p>
-            <select
+        &lt;button type="button" className="btn" onClick={shovedFileMenu}>Работа с файлами&lt;/button>
+        &lt;div className="flexConteiner">
+          &lt;div className="flexConteiner__item">
+            &lt;p>Статус задачи&lt;/p>
+            &lt;select
               name="status"
               onChange={formik.handleChange}
               value={formik.values.status}
             >
-              <option value="waiting">ожидает</option>
-              <option value="inProcess">в процессе</option>
-              <option value="completed">выполнена</option>
-              <option value="overdue">просрочена</option>
-            </select>
-          </div>
-          <div className="flexConteiner__item">
-            <p>Дедлайн</p>
-            <input
+              &lt;option value="waiting">ожидает&lt;/option>
+              &lt;option value="inProcess">в процессе&lt;/option>
+              &lt;option value="completed">выполнена&lt;/option>
+              &lt;option value="overdue">просрочена&lt;/option>
+            &lt;/select>
+          &lt;/div>
+          &lt;div className="flexConteiner__item">
+            &lt;p>Дедлайн&lt;/p>
+            &lt;input
               className="input__date"
               type="date"
               name="deadline"
               onChange={formik.handleChange}
               value={formik.values.deadline}
             />
-          </div>
-        </div>
-        <div className="alertlog">
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="alertlog">
           {formik.errors.topic}
           {formik.errors.deadline}
-        </div>
-        <div className="flexConteiner">
-          <div className={cn('flexConteiner__item', { hide: redactedItemId === null })}>
-            <button
+        &lt;/div>
+        &lt;div className="flexConteiner">
+          &lt;div className={cn('flexConteiner__item', { hide: redactedItemId === null })}>
+            &lt;button
               type="button"
               className={cn('btn')}
               onClick={redactToDoItem}
             >
               Сохранить изменения
-            </button>
-          </div>
-          <div className="flexConteiner__item">
-            <button type="button" className="btn" onClick={addNewToDo}>Сохранить новую задачу</button>
-          </div>
-        </div>
-      </div>
-    </form>
+            &lt;/button>
+          &lt;/div>
+          &lt;div className="flexConteiner__item">
+            &lt;button type="button" className="btn" onClick={addNewToDo}>Сохранить новую задачу&lt;/button>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
   );
 };
 export default ToDoRedactor;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#FileMenu">FileMenu</a></li><li><a href="global.html#ListTodoItems">ListTodoItems</a></li><li><a href="global.html#ListUploadFiles">ListUploadFiles</a></li><li><a href="global.html#SearchToDoItem">SearchToDoItem</a></li><li><a href="global.html#ToDoItem">ToDoItem</a></li><li><a href="global.html#ToDoRedactor">ToDoRedactor</a></li><li><a href="global.html#TodoMain">TodoMain</a></li><li><a href="global.html#nameSchema">nameSchema</a></li><li><a href="global.html#resize">resize</a></li><li><a href="global.html#toastAddToDo">toastAddToDo</a></li><li><a href="global.html#toastDeleteFile">toastDeleteFile</a></li><li><a href="global.html#toastDeleteToDo">toastDeleteToDo</a></li><li><a href="global.html#toastFound">toastFound</a></li><li><a href="global.html#toastLoadedEarlier">toastLoadedEarlier</a></li><li><a href="global.html#toastNotDelete">toastNotDelete</a></li><li><a href="global.html#toastNotFound">toastNotFound</a></li><li><a href="global.html#toastNotRedacted">toastNotRedacted</a></li><li><a href="global.html#toastOverdue">toastOverdue</a></li><li><a href="global.html#toastOverfloy">toastOverfloy</a></li><li><a href="global.html#toastRedacted">toastRedacted</a></li><li><a href="global.html#toastUpload">toastUpload</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Nov 21 2022 17:33:04 GMT+0300 (Москва, стандартное время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

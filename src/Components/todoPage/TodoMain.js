@@ -3,8 +3,15 @@ import ListTodoItems from './ListTodoItems.js';
 import ToDoRedactor from './ToDoRedactor.js';
 import resize from '../tools/resize.js';
 import SearchToDoItem from '../tools/searchToDoItem.js';
-
+/**
+ * Возвращаем основную структуру todo лист с полем редактирования, поиска и спиком
+ * @returns JSX элемент todo листа
+ */
 const TodoMain = () => {
+  /**
+   * При разрещении икна менее 600px запрещаем изменять ширину элементов
+   * выставляем стартовую ширину для блоков
+   */
   const isResizebleWidth = window.innerWidth > 600;
   const styleWidth = isResizebleWidth ? '50%' : '100%';
 

@@ -3,7 +3,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { todoState } from '../../store/todoSlice.js';
 import ToDoItem from './ToDoItem.js';
-
+/**
+ * возвращает JSX элемент список всех ToDo заданий
+ */
 const ListTodoItems = () => {
   const { todoItems } = useSelector(todoState);
   const idItems = Object.keys(todoItems);

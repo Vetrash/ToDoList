@@ -2,7 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { todoState, updateListLoadFile } from '../../store/todoSlice.js';
-
+/**
+ * Формирует и возвращает список загруженный файлов либо строку об отсуствии загруженных файлов
+ * @returns возвращаем JSX эелемент списка загруженных файлов
+ */
 const ListUploadFiles = () => {
   const { todoItems, uploadFile, redactedItemId } = useSelector(todoState);
   const dispatch = useDispatch();
@@ -16,7 +19,10 @@ const ListUploadFiles = () => {
       </ul>
     );
   }
-
+  /**
+   * удаляет элемент на котором вызвана из state
+   * @param {*} e dom элемент
+   */
   const deletUploadItem = (e) => {
     const parent = e.target.closest('.fileMenu__fileLine');
     const nameFile = parent.querySelector('.fileMenu__textLine').textContent;
