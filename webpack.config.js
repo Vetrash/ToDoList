@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -38,7 +38,7 @@ module.exports = {
     ],
   },
   plugins: [
-    // new Dotenv(),
+    new Dotenv({ systemvars: true }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
