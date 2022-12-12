@@ -18,6 +18,7 @@ const config = {
   appId: process.env.REACT_APP_APP_ID,
   
 };
+console.log(process.env.REACT_APP_API_KEY)
 /* eslint-enable */
 initializeApp(config);
 
