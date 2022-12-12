@@ -16,9 +16,7 @@ const config = {
   storageBucket: 'todo-list-36d26.appspot.com',
   messagingSenderId: process.env.REACT_APP_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  
 };
-console.log(process.env.REACT_APP_API_KEY)
 /* eslint-enable */
 initializeApp(config);
 
