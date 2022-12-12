@@ -9,13 +9,13 @@ import App from './App';
 
 /* eslint-disable */
 const config = {
-  apiKey: 'API_KEY',
+  apiKey: process.env.API_KEY,
   authDomain: 'todo-list-36d26.firebaseapp.com',
   databaseURL: 'https://todo-list-36d26-default-rtdb.firebaseio.com',
   projectId: 'todo-list-36d26',
   storageBucket: 'todo-list-36d26.appspot.com',
-  messagingSenderId: 'SENDER_ID',
-  appId: 'APP_ID',
+  messagingSenderId: process.env.SENDER_ID,
+  appId: process.env.APP_ID,
   
 };
 /* eslint-enable */
