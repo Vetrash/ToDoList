@@ -1,0 +1,42 @@
+export default {
+  translation: {
+    entering: 'Войти',
+    signUp: 'Регистрация',
+    goTo: 'Но вы можете перейти ',
+    pageNotFound: 'Страница не найдена',
+    onMainPage: 'на главную страницу',
+    channelControl: 'Управление каналом',
+    haveAcount: 'Уже зарегистрированы? ',
+    enter: 'Вход',
+    nameUser: 'Имя пользователя',
+    youNick: 'Ваш ник',
+    password: 'Пароль',
+    confirmPassword: 'Подтвердите пароль',
+    register: 'Зарегистрироваться',
+    notAccount: 'Нет аккаунта? ',
+    exit: 'Выйти',
+    unknownError: 'Упс что-то пошло не так',
+    error: {
+      duplicate: 'Имя канала должно быть уникальным',
+      lengthError: 'Имя канала должно содержать не менее 3 и не более 20 символов',
+      required: 'Поле должно быть заполнено',
+      unknownError: 'Упс что-то пошло не так',
+      badWord: 'Нецензурные слова запрещены',
+    },
+    errorlogin: {
+      lengthError: 'От 3 до 20 символов',
+      required: 'Поле должно быть заполнено',
+      cloneLogin: 'Пользователь с таким именем уже существует',
+      UnknownUser: 'Неверные имя пользователя или пароль',
+    },
+    errorPassword: {
+      lengthError: 'Не менее 6 символов',
+      required: 'Поле должно быть заполнено',
+    },
+    errorConfirmPassword: {
+      mismatch: 'Пароли должны совпадать',
+      required: 'Поле должно быть заполнено',
+      lengthError: 'Не менее 6 символов',
+    },
+  },
+};

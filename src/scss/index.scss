@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import '~@csstools/normalize.css';
 
-body, p {
-    margin: 0;
+body, input, h1, h2, h3, h4, p{
+  padding: 0px;
+  margin: 0px;
 }
 
 p {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+input:focus,
+select:focus,
+option:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }

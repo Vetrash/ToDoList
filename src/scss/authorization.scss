@@ -1,0 +1,47 @@
+.invalid-tooltip {
+  color: $collorOverdueSecond;
+  padding-left: 20px;
+}
+
+.form__conteiner {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  font-size: $baseFontSize;
+}
+
+.form__subtitle {
+  padding-top: 10px;
+}
+
+.form__title {
+  text-align: center;
+}
+
+.form__control {
+  border: 2px solid $collorTextDark;
+  border-radius: 20px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: $baseFontSize;
+  width: calc(100% - 20px - 4px);
+  padding-left: 20px;
+}
+
+.form__label {
+  padding-left: 20px;
+}
+
+.form__inputBlock {
+  margin-top: 10px;
+}

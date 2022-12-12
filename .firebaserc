@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "todo-list-36d26"
-  }
+    "default": "todo-list-36d26",
+    "todo": "todo-list-36d26"
+  },
+  "targets": {},
+  "etags": {}
 }

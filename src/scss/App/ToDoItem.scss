@@ -9,7 +9,7 @@
 
 .topic {
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: $baseFontSize;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,18 +76,18 @@
   background: $collorInProcessSecond;
 }
 
-.completed {
+.done {
   background: $collorCompletedMain;
 }
 
-.completed .control-conteiner {
+.done .control-conteiner {
   background: $collorCompletedSecond;
 }
 
-.overdue {
+.undone {
   background: $collorOverdueMain;
 }
 
-.overdue .control-conteiner {
+.undone .control-conteiner {
   background: $collorOverdueSecond;
 }
