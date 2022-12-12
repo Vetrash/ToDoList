@@ -20,6 +20,7 @@ const ToDoRedactor = observer(() => {
       deadline: '',
       status: 'waiting',
     },
+    onSubmit: () => { console.log('send'); },
     validationSchema: nameSchema(TodoState.todoTopics),
   });
 
