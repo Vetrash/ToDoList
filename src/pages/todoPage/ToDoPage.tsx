@@ -24,7 +24,7 @@ const ToDoPage = () => {
         const dataClearNull = Object.entries(data).filter((elem) => elem[1] !== null);
         const arrData = dataClearNull.map((elem) => ({ ...elem[1], id: elem[0] }));
         TodoState.newItemsByArr(arrData);
-      });
+      }, { onlyOnce: true });
     }
   }, []);
 

@@ -59,7 +59,6 @@ const ToDoRedactor = observer(() => {
       const statusRed = getCheckStatys(deadline, status);
       const files = _.cloneDeep(TodoState.uploadFile);
       const db = getDatabase();
-      console.log(topic);
       set(ref(db, `data/${TodoState.redactedItemId}`), {
         topic,
         description,
