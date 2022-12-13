@@ -18,6 +18,7 @@ class UserState {
     this.token = '';
     this.login = '';
     localStorage.removeItem('token');
+    localStorage.removeItem('login');
   }
 }
 export default new UserState();

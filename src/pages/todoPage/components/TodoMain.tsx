@@ -41,6 +41,11 @@ const TodoMain = observer(() => {
 
   const showRedactor = () => { TrigerUIState.switchShowedRedactor(true); };
 
+  const exit = () => {
+    TodoState.clearItems();
+    UserState.signOff();
+  };
+
   return (
     <>
       <div className="todolist-block" style={{ width: TrigerUIState.isStyleMobail ? '100%' : '50%' }}>
@@ -53,7 +58,7 @@ const TodoMain = observer(() => {
         </div>
         <div className="title">
           <div className="title__buttonConteiner">
-            <button type="button" onClick={() => UserState.signOff()} className="title__button leftBtn">Выход</button>
+            <button type="button" onClick={exit} className="title__button leftBtn">Выход</button>
             <button type="button" onClick={showRedactor} className="title__button rightBtn">Создать задачу</button>
           </div>
           <select onChange={selectToDos} className="workSelector" name="work" id="work-select">

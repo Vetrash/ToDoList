@@ -45,6 +45,10 @@ class TodoState {
     });
   }
 
+  clearItems() {
+    this.todoItems = {};
+  }
+
   deleteItems(id : string) {
     const lastTopic = this.todoItems[id].topic;
     const cloneTodoTopics = _.cloneDeep(this.todoTopics);

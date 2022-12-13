@@ -4,7 +4,7 @@ import './scss/App/App.scss';
 import { ToastContainer } from 'react-toastify';
 import { observer } from 'mobx-react-lite';
 import 'react-toastify/dist/ReactToastify.css';
-import TodoPage from './pages/todoPage/todo';
+import TodoPage from './pages/todoPage/ToDoPage';
 import Authorization from './pages/authorization/authorization';
 import SignUp from './pages/SignUp/SignUp';
 import NotFound from './pages/NotFound/NotFound';
