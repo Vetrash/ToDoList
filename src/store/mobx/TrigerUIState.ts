@@ -1,10 +1,9 @@
+/* eslint lines-between-class-members: ["error", "always", { "exceptAfterSingleLine": true }] */
 import { makeAutoObservable } from 'mobx';
 
 class TrigerUIState {
   isStyleMobail = true;
-
   isShovedFileMenu = false;
-
   isShovedRedactor = false;
 
   constructor() {

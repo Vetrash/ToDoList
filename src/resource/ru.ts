@@ -8,7 +8,7 @@ export default {
     channelControl: 'Управление каналом',
     haveAcount: 'Уже зарегистрированы? ',
     enter: 'Вход',
-    nameUser: 'Имя пользователя',
+    username: 'Имя пользователя',
     youNick: 'Ваш ник',
     password: 'Пароль',
     confirmPassword: 'Подтвердите пароль',
@@ -23,17 +23,17 @@ export default {
       unknownError: 'Упс что-то пошло не так',
       badWord: 'Нецензурные слова запрещены',
     },
-    errorlogin: {
+    error_username: {
       lengthError: 'От 3 до 20 символов',
       required: 'Поле должно быть заполнено',
       cloneLogin: 'Пользователь с таким именем уже существует',
       UnknownUser: 'Неверные имя пользователя или пароль',
     },
-    errorPassword: {
+    error_password: {
       lengthError: 'Не менее 6 символов',
       required: 'Поле должно быть заполнено',
     },
-    errorConfirmPassword: {
+    error_confirmPassword: {
       mismatch: 'Пароли должны совпадать',
       required: 'Поле должно быть заполнено',
       lengthError: 'Не менее 6 символов',

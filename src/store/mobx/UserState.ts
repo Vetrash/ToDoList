@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import TodoState from './TodoState';
 
 class UserState {
   token = '';
@@ -19,6 +20,7 @@ class UserState {
     this.login = '';
     localStorage.removeItem('token');
     localStorage.removeItem('login');
+    TodoState.clearItems();
   }
 }
 export default new UserState();

@@ -1,50 +1,24 @@
 import React, { useEffect } from 'react';
-import { getDatabase, ref, query, equalTo, onValue, orderByChild } from 'firebase/database';
 import { observer } from 'mobx-react-lite';
 import ListTodoItems from './ListTodoItems';
-import ToDoRedactor from './ToDoRedactor';
+import ToDoRedactor from './ToDoRedactor/ToDoRedactor';
 import resize from '../../../Components/resize';
 import SearchToDoItem from './searchToDoItem';
-import TodoState from '../../../store/mobx/TodoState';
 import UserState from '../../../store/mobx/UserState';
 import TrigerUIState from '../../../store/mobx/TrigerUIState';
-
-type resType = { id: string, topic: string, description: string,
-  status: string, deadline: string, files: { name: string, url: string }[]}[];
+import selectToDos from './selectToDos';
 
 const TodoMain = observer(() => {
-  const resizeWindows = () => { TrigerUIState.checkMobailWidth(window.innerWidth); };
+  const resizeWindows = () => {
+    TrigerUIState.checkMobailWidth(window.innerWidth);
+  };
 
   useEffect(() => {
     TrigerUIState.checkMobailWidth(window.innerWidth);
     window.addEventListener('resize', resizeWindows);
   });
 
-  const selectToDos = (e : React.ChangeEvent) => {
-    const localLogin = localStorage.getItem('login');
-    const target = e.target as HTMLSelectElement;
-    const type = target.value === 'all' ? '' : target.value;
-    const db = getDatabase();
-    const recentPostsRef = query(ref(db, 'data'), orderByChild('username'), equalTo(`${localLogin}@test.ru`));
-    onValue(recentPostsRef, (snapshot) => {
-      const data : resType = snapshot.val();
-      const dataClearNull = Object.entries(data).filter((elem) => elem[1] !== null);
-      const arrData = dataClearNull.map((elem) => ({ ...elem[1], id: elem[0] }));
-      if (type !== '') {
-        const filtArr = arrData.filter((elem) => elem.status === type);
-        TodoState.newItemsByArr(filtArr);
-        return;
-      }
-      TodoState.newItemsByArr(arrData);
-    }, { onlyOnce: true });
-  };
-
   const showRedactor = () => { TrigerUIState.switchShowedRedactor(true); };
-
-  const exit = () => {
-    TodoState.clearItems();
-    UserState.signOff();
-  };
 
   return (
     <>
@@ -58,10 +32,14 @@ const TodoMain = observer(() => {
         </div>
         <div className="title">
           <div className="title__buttonConteiner">
-            <button type="button" onClick={exit} className="title__button leftBtn">Выход</button>
-            <button type="button" onClick={showRedactor} className="title__button rightBtn">Создать задачу</button>
+            <button type="button" onClick={() => UserState.signOff()} className="title__button leftBtn">
+              Выход
+            </button>
+            <button type="button" onClick={showRedactor} className="title__button rightBtn">
+              Создать задачу
+            </button>
           </div>
-          <select onChange={selectToDos} className="workSelector" name="work" id="work-select">
+          <select onChange={(e) => selectToDos(e)} className="workSelector" name="work" id="work-select">
             <option value="all">Все мои дела</option>
             <option value="waiting">Мои не начатые дела</option>
             <option value="inProcess">Мои начатые дела</option>

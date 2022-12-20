@@ -2,11 +2,8 @@ import React, { useEffect } from 'react';
 import { getDatabase, ref, query, equalTo, onValue, orderByChild } from 'firebase/database';
 import FileMenu from '../fileMenu/FileMenu';
 import TodoMain from './components/TodoMain';
-import TodoState from '../../store/mobx/TodoState';
+import TodoState, { ActionData } from '../../store/mobx/TodoState';
 import UserState from '../../store/mobx/UserState';
-
-type resType = { id: string, topic: string, description: string,
-  status: string, deadline: string, files: { name: string, url: string }[]}[];
 
 const ToDoPage = () => {
   useEffect(() => {
@@ -19,7 +16,7 @@ const ToDoPage = () => {
       const db = getDatabase();
       const recentPostsRef = query(ref(db, 'data'), orderByChild('username'), equalTo(`${localLogin}@test.ru`));
       onValue(recentPostsRef, (snapshot) => {
-        const data : resType = snapshot.val();
+        const data : ActionData = snapshot.val();
         if (data === null) return;
         const dataClearNull = Object.entries(data).filter((elem) => elem[1] !== null);
         const arrData = dataClearNull.map((elem) => ({ ...elem[1], id: elem[0] }));

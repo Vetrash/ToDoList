@@ -18,9 +18,12 @@ export const nameSchema = (arr : string[]) => yup.object().shape({
 
 export const authSchema = yup.object().shape({
   username: yup.string()
-    .required('required'),
+    .required('required')
+    .min(3, 'lengthError')
+    .max(20, 'lengthError'),
   password: yup.string()
-    .required('required'),
+    .required('required')
+    .min(6, 'lengthError'),
 });
 
 export const SignupSchema = yup.object().shape({

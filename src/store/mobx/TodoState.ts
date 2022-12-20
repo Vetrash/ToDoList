@@ -1,21 +1,16 @@
+/* eslint lines-between-class-members: ["error", "always", { "exceptAfterSingleLine": true }] */
 import _ from 'lodash';
 import { makeAutoObservable } from 'mobx';
 
 type ActionTodo = { id: string, topic: string, description: string,
   status: string, deadline: string, files: { name: string, url: string }[]};
-type ActionData = { id: string, topic: string, description: string,
-  status: string, deadline: string, files: { name: string, url: string }[]}[];
+export type ActionData = ActionTodo[];
 
 class TodoState {
-  todoItems: {[id: string]:{ id: string, topic: string, description: string,
-  status: string, deadline: string, files: { name: string, url: string }[]}} = {};
-
+  todoItems: {[id: string]: ActionTodo} = {};
   redactedItemId: null|string = null;
-
   searchItemId: null|string = null;
-
   uploadFile: { name: string, url: string }[] = [];
-
   todoTopics: string[] = [];
 
   constructor() {
@@ -24,7 +19,7 @@ class TodoState {
 
   addItem(payload : ActionTodo) {
     const { id, topic, description, status, deadline, files } = payload;
-    this.todoItems[id] = { id, topic, description, status, files, deadline };
+    this.todoItems[id] = { id, topic, description, files, status, deadline };
     this.uploadFile = [];
     this.redactedItemId = null;
     this.todoTopics.push(topic);
@@ -38,10 +33,7 @@ class TodoState {
     payload.forEach((elem) => {
       const { id, topic, description, status, deadline, files } = elem;
       const checkFiles = typeof files === 'undefined' ? [] : files;
-      this.todoItems[id] = { id, topic, description, status, files: checkFiles, deadline };
-      this.uploadFile = [];
-      this.redactedItemId = null;
-      this.todoTopics.push(topic);
+      this.addItem({ id, topic, description, status, files: checkFiles, deadline });
     });
   }
 
@@ -59,15 +51,12 @@ class TodoState {
   }
 
   redactItem(payload: ActionTodo) {
-    const { id, topic, description, status, deadline } = payload;
+    const { id } = payload;
     const lastTopic = this.todoItems[id].topic;
     const files = _.cloneDeep(this.uploadFile);
-    this.todoItems[id] = { id, topic, description, files, status, deadline };
-    this.uploadFile = [];
-    this.redactedItemId = null;
+    this.addItem({ ...payload, files });
     const cloneTodoTopics = _.cloneDeep(this.todoTopics);
     this.todoTopics = cloneTodoTopics.filter((elem) => elem !== lastTopic);
-    this.todoTopics.push(topic);
   }
 
   setRedactItemId(id : string) {

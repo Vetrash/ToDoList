@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './scss/App/App.scss';
 import { ToastContainer } from 'react-toastify';
 import { observer } from 'mobx-react-lite';
@@ -8,23 +8,14 @@ import TodoPage from './pages/todoPage/ToDoPage';
 import Authorization from './pages/authorization/authorization';
 import SignUp from './pages/SignUp/SignUp';
 import NotFound from './pages/NotFound/NotFound';
-import PrivateOutlet from './Components/PrivateOutlet';
+import AuthRote from './Components/AltRoute/AuthRote';
 
 const App = observer(() => (
   <>
     <Routes>
-      <Route path="/" element={<PrivateOutlet alt={<Navigate to="/login" />} />}>
-        <Route path="/" element={<TodoPage />} />
-      </Route>
-
-      <Route path="/login" element={<PrivateOutlet alt={<Authorization />} />}>
-        <Route path="/login" element={<Navigate to="/" />} />
-      </Route>
-
-      <Route path="/signup" element={<PrivateOutlet alt={<SignUp />} />}>
-        <Route path="/signup" element={<Navigate to="/" />} />
-      </Route>
-
+      <Route path="/" element={<AuthRote elementAuth={<TodoPage />} elementNotAuth="/login" />} />
+      <Route path="/login" element={<AuthRote elementAuth="/" elementNotAuth={<Authorization />} />} />
+      <Route path="/signup" element={<AuthRote elementAuth="/" elementNotAuth={<SignUp />} />} />
       <Route path="/*" element={<NotFound />} />
     </Routes>
     <ToastContainer />
