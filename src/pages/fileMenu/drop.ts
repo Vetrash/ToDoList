@@ -1,15 +1,13 @@
 import React from 'react';
-import type { setType } from './typesFileMenu';
-import upload from './upload';
+import preload from './preload';
 
-export const drop = (e: React.DragEvent, setIsLoading: setType, setIsDragOnLoadZone: setType) => {
+const drop = (e: React.DragEvent) => {
   e.preventDefault();
   const target = e.target as HTMLElement;
   const parent = target.closest('.fileMenu__loader');
   if (parent !== null) {
     const fileList = e.dataTransfer.files as FileList;
-    upload(fileList, setIsLoading);
+    preload(fileList);
   }
-  setIsDragOnLoadZone(false);
 };
 export default drop;

@@ -1,15 +1,13 @@
 import React from 'react';
-import upload from './upload';
-import type { setType } from './typesFileMenu';
+import preload from './preload';
 
-const textLoadZone = (isDragOnLoadZone: boolean, setIsLoading: setType) => {
+const textLoadZone = () => {
   const hendlerUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     const fileList = target.files as FileList;
-    upload(fileList, setIsLoading);
+    preload(fileList);
   };
-  const onDragElement = <p>Отпустите файлы для загрузки</p>;
-  const offDragElement = (
+  return (
     <>
       <label className="loader__text" htmlFor="file-input">
         Выбрать файл
@@ -18,7 +16,6 @@ const textLoadZone = (isDragOnLoadZone: boolean, setIsLoading: setType) => {
       <span> или перетащите его сюда</span>
     </>
   );
-  return isDragOnLoadZone ? onDragElement : offDragElement;
 };
 
 export default textLoadZone;

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import ToDoItem from './ToDoItem';
+import ToDoItem from './ToDoItem/ToDoItem';
 import TodoState from '../../../store/mobx/TodoState';
 
 const ListTodoItems = observer(() => {
@@ -11,8 +11,6 @@ const ListTodoItems = observer(() => {
       <ToDoItem id={id} />
     </li>
   ));
-  return (
-    <ul className="todolist">{renderItems}</ul>
-  );
+  return <ul className="todolist">{renderItems}</ul>;
 });
 export default ListTodoItems;

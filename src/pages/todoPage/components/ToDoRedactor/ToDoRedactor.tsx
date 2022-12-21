@@ -5,8 +5,7 @@ import { observer } from 'mobx-react-lite';
 import TodoState from '../../../../store/mobx/TodoState';
 import TrigerUIState from '../../../../store/mobx/TrigerUIState';
 import { nameSchema } from '../../../../Components/validate';
-import addNewToDo from './components/addNewToDo';
-import redactToDoItem from './components/redactToDoItem';
+import safeTodo, { modeList } from './components/safeTodo';
 
 const ToDoRedactor = observer(() => {
   const formik = useFormik({
@@ -26,14 +25,8 @@ const ToDoRedactor = observer(() => {
   useEffect(() => {
     if (TodoState.redactedItemId !== null) {
       const id = TodoState.redactedItemId;
-      const { topic, description, status, deadline } = TodoState.todoItems[id];
-      formik.setValues({
-        topic,
-        topicDublicate: topic,
-        description,
-        status,
-        deadline,
-      });
+      const { topic } = TodoState.todoItems[id];
+      formik.setValues({ ...TodoState.todoItems[id], topicDublicate: topic });
     }
   }, [TodoState.redactedItemId]);
   useEffect(() => {
@@ -43,13 +36,9 @@ const ToDoRedactor = observer(() => {
     formik.setFieldValue('topic', '', true);
   }, []);
 
-  const shovedFileMenu = () => {
-    TrigerUIState.switchShowedFileMenu(true);
-  };
+  const shovedFileMenu = () => { TrigerUIState.switchShowedFileMenu(true); };
 
-  const closerRedactor = () => {
-    TrigerUIState.switchShowedRedactor(false);
-  };
+  const closerRedactor = () => { TrigerUIState.switchShowedRedactor(false); };
 
   const isMobailRedactor = TrigerUIState.isShovedRedactor && TrigerUIState.isStyleMobail;
 
@@ -98,12 +87,12 @@ const ToDoRedactor = observer(() => {
           </div>
           <div className="flexConteiner">
             <div className={cn('flexConteiner__item', { hide: TodoState.redactedItemId === null })}>
-              <button type="button" className={cn('btn', 'btn_BlockHeight')} onClick={() => redactToDoItem(formik)}>
+              <button type="button" className={cn('btn', 'btn_BlockHeight')} onClick={() => safeTodo(formik, modeList.redactItem)}>
                 Сохранить изменения
               </button>
             </div>
             <div className="flexConteiner__item">
-              <button type="button" className="btn btn_BlockHeight" onClick={() => addNewToDo(formik)}>
+              <button type="button" className="btn btn_BlockHeight" onClick={() => safeTodo(formik, modeList.newItem)}>
                 Сохранить новую задачу
               </button>
             </div>

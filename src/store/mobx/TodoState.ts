@@ -5,6 +5,7 @@ import { makeAutoObservable } from 'mobx';
 type ActionTodo = { id: string, topic: string, description: string,
   status: string, deadline: string, files: { name: string, url: string }[]};
 export type ActionData = ActionTodo[];
+export type ActionObj = {[id: string]: ActionTodo};
 
 class TodoState {
   todoItems: {[id: string]: ActionTodo} = {};
@@ -12,16 +13,21 @@ class TodoState {
   searchItemId: null|string = null;
   uploadFile: { name: string, url: string }[] = [];
   todoTopics: string[] = [];
+  newItemId: null|string = null;
+  uploadFileData: File[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  addFileData(Files: File[]) { this.uploadFileData = [...this.uploadFileData, ...Files]; }
 
   addItem(payload : ActionTodo) {
     const { id, topic, description, status, deadline, files } = payload;
     this.todoItems[id] = { id, topic, description, files, status, deadline };
     this.uploadFile = [];
     this.redactedItemId = null;
+    this.newItemId = null;
     this.todoTopics.push(topic);
   }
 
@@ -48,6 +54,7 @@ class TodoState {
     delete this.todoItems[id];
     this.uploadFile = [];
     this.redactedItemId = null;
+    this.newItemId = null;
   }
 
   redactItem(payload: ActionTodo) {
@@ -61,8 +68,11 @@ class TodoState {
 
   setRedactItemId(id : string) {
     this.redactedItemId = id;
+    this.newItemId = id;
     this.uploadFile = this.todoItems[id].files;
   }
+
+  setNewitemId(id : string) { this.newItemId = id; }
 
   loadFiles(payload : { name: string, url: string }) {
     this.uploadFile.push(payload);

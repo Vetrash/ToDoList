@@ -5,11 +5,8 @@ const getCheckStatys = (deadline:string, status:string) => {
   const endDate = dayjs(deadline);
   const diffDate = endDate.diff(nowDate, 'day');
   const statusRed = () => {
-    if (diffDate < 0) {
-      if (status !== 'done') return 'undone';
-      return status;
-    }
-    if (status === 'undone') return 'waiting';
+    if (diffDate > 0 && status === 'undone') return 'waiting';
+    if (diffDate < 0 && status !== 'done') return 'undone';
     return status;
   };
   return statusRed();

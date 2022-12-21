@@ -1,5 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/8624ad4e6fdf199f1166/maintainability)](https://codeclimate.com/github/Vetrash/ToDoList/maintainability)<br>
 # ToDoList.OK
-
 Приложение состоит из двух основных компонентов:
 1)  Вертикальный список с заметок;
 2)  Область взаимодействия c заметкой.

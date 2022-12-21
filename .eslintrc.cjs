@@ -44,6 +44,7 @@ module.exports = {
     'react/no-unknown-property': 'off',
     'linebreak-style': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'no-continue': 'off',
   },
   ignorePatterns: ['build/', 'dist/', 'docs/', 'server/', 'node_modules/'],
 };

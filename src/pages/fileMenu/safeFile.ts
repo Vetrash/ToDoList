@@ -3,9 +3,9 @@ import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import TodoState from '../../store/mobx/TodoState';
 import UserState from '../../store/mobx/UserState';
 
-const safeFile = (name: string) => {
+const safe = (name:string, path: string) => {
   const storage = getStorage();
-  getDownloadURL(ref(storage, `${UserState.login}/${name}`))
+  getDownloadURL(ref(storage, `${UserState.login}/${path}/${name}`))
     .then((url: string) => {
       axios({ url, method: 'GET', responseType: 'blob' }).then((response: { data: Blob }) => {
         const urlItem = URL.createObjectURL(response.data);
@@ -15,6 +15,10 @@ const safeFile = (name: string) => {
     .catch((error) => {
       console.log(error);
     });
+};
+const safeFile = (name: string) => {
+  const path = TodoState.newItemId === null ? TodoState.newItemId : TodoState.redactedItemId;
+  safe(name, path as string);
 };
 
 export default safeFile;
