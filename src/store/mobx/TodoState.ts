@@ -2,27 +2,33 @@
 import _ from 'lodash';
 import { makeAutoObservable } from 'mobx';
 
-type ActionTodo = { id: string, topic: string, description: string,
-  status: string, deadline: string, files: { name: string, url: string }[]};
+type ActionTodo = {
+  id: string;
+  topic: string;
+  description: string;
+  status: string;
+  deadline: string;
+  files: { name: string; url: string }[];
+};
 export type ActionData = ActionTodo[];
-export type ActionObj = {[id: string]: ActionTodo};
+export type ActionObj = { [id: string]: ActionTodo };
 
 class TodoState {
-  todoItems: {[id: string]: ActionTodo} = {};
-  redactedItemId: null|string = null;
-  searchItemId: null|string = null;
-  uploadFile: { name: string, url: string }[] = [];
+  todoItems: { [id: string]: ActionTodo } = {};
+  redactedItemId: null | string = null;
+  searchItemId: null | string = null;
+  uploadFile: { name: string; url: string }[] = [];
   todoTopics: string[] = [];
-  newItemId: null|string = null;
+  newItemId: null | string = null;
   uploadFileData: File[] = [];
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+  constructor() { makeAutoObservable(this); }
 
-  addFileData(Files: File[]) { this.uploadFileData = [...this.uploadFileData, ...Files]; }
+  addFileData(Files: File[]) { this.uploadFileData = [...this.uploadFileData, ...Files];}
 
-  addItem(payload : ActionTodo) {
+  updateFileData(Files: File[]) { this.uploadFileData = Files; }
+
+  addItem(payload: ActionTodo) {
     const { id, topic, description, status, deadline, files } = payload;
     this.todoItems[id] = { id, topic, description, files, status, deadline };
     this.uploadFile = [];
@@ -43,11 +49,9 @@ class TodoState {
     });
   }
 
-  clearItems() {
-    this.todoItems = {};
-  }
+  clearItems() { this.todoItems = {}; }
 
-  deleteItems(id : string) {
+  deleteItems(id: string) {
     const lastTopic = this.todoItems[id].topic;
     const cloneTodoTopics = _.cloneDeep(this.todoTopics);
     this.todoTopics = cloneTodoTopics.filter((elem) => elem !== lastTopic);
@@ -66,24 +70,25 @@ class TodoState {
     this.todoTopics = cloneTodoTopics.filter((elem) => elem !== lastTopic);
   }
 
-  setRedactItemId(id : string) {
+  setRedactItemId(id: string) {
     this.redactedItemId = id;
     this.newItemId = id;
     this.uploadFile = this.todoItems[id].files;
   }
 
-  setNewitemId(id : string) { this.newItemId = id; }
+  setNewitemId(id: string) { this.newItemId = id; }
 
-  loadFiles(payload : { name: string, url: string }) {
-    this.uploadFile.push(payload);
-  }
+  loadFiles(payload: { name: string; url: string }) { this.uploadFile.push(payload); }
 
-  updateListLoadFile(payload : { name: string, url: string }[]) {
-    this.uploadFile = payload;
-  }
+  updateListLoadFile(payload: { name: string; url: string }[]) { this.uploadFile = payload; }
 
-  selectedItemById(id : string|null) {
-    this.searchItemId = id;
-  }
+  selectedItemById(id: string | null) { this.searchItemId = id; }
+
+  DeletUploadFile = (nameFile: string) => {
+    const newList = this.uploadFileData.filter((elem) => elem.name !== nameFile);
+    const newUpList = this.uploadFile.filter((elem) => elem.name !== nameFile);
+    this.updateFileData(newList);
+    this.updateListLoadFile(newUpList);
+  };
 }
 export default new TodoState();

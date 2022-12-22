@@ -1,5 +1,5 @@
 import React from 'react';
-import preload from './preload';
+import preload from './functions/preload';
 
 const textLoadZone = () => {
   const hendlerUpload = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -4,7 +4,7 @@ import cn from 'classnames';
 import ListUploadFiles from './ListUploadFiles';
 import TrigerUIState from '../../store/mobx/TrigerUIState';
 import textLoadZone from './textLoadZone';
-import drop from './drop';
+import drop from './functions/drop';
 
 const FileMenu = observer(() => {
   const closer = () => {
