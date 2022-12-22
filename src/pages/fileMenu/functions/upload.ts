@@ -9,16 +9,15 @@ const upload = async (path: string) => {
   const fileList = await Promise.all(
     TodoState.uploadFileData.map((elem) => {
       const storageRef = ref(storage, `${UserState.login}/${path}/${elem.name}`);
-      return uploadBytes(storageRef, elem);
+      return uploadBytes(storageRef, elem)
+        .then((data) => {
+          const { name } = data.metadata;
+          return getUrlLoadFile(name, path).then((item) => item);
+        });
     }),
   ).then((res) => {
     toastUpload(TodoState.uploadFileData.length);
-    return Promise.all(
-      res.map((data) => {
-        const { name } = data.metadata;
-        return getUrlLoadFile(name, path).then((item) => item);
-      }),
-    ).then((item) => item);
+    return res;
   });
   return fileList;
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { authSchema } from '../../../Components/validate';
-import SubmitAuth from './SubmitAuth';
+import SubmitSignUpIn from './SubmitSignUpIn';
 import FormInputBlock from '../../../Components/FormInputBlock';
 
 const FormAuth = () => {
@@ -11,7 +11,7 @@ const FormAuth = () => {
     <Formik
       initialValues={{ username: '', password: '' }}
       validationSchema={authSchema}
-      onSubmit={(values, action) => SubmitAuth(values, action)}
+      onSubmit={(values, action) => SubmitSignUpIn(values, action)}
     >
       {({ errors }) => (
         <Form className="form">
@@ -32,7 +32,9 @@ const FormAuth = () => {
             errors={errors.password}
             tLable="password"
           />
-          <button type="submit" className="btn">{t('entering')}</button>
+          <button type="submit" className="btn">
+            {t('entering')}
+          </button>
         </Form>
       )}
     </Formik>

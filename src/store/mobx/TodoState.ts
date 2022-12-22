@@ -24,7 +24,7 @@ class TodoState {
 
   constructor() { makeAutoObservable(this); }
 
-  addFileData(Files: File[]) { this.uploadFileData = [...this.uploadFileData, ...Files];}
+  addFileData(Files: File[]) { this.uploadFileData = [...this.uploadFileData, ...Files]; }
 
   updateFileData(Files: File[]) { this.uploadFileData = Files; }
 

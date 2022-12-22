@@ -13,7 +13,9 @@ const SubmitSignUp = (values: valuesType, action: actionType) => {
       const token = userCredential.user.uid;
       LogIn(token, values.username);
     })
-    .catch(() => {
+    .catch((err) => {
+      const { code, message, name, stack } = err;
+      console.log({ code, message, name, stack });
       action.setErrors({ username: 'cloneLogin' });
     });
 };

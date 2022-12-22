@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import ListTodoItems from '../ListTodoItems';
 import SearchToDoItem from '../searchToDoItem';
 import UserState from '../../../../store/mobx/UserState';
@@ -6,7 +7,7 @@ import TrigerUIState from '../../../../store/mobx/TrigerUIState';
 import selectToDos from '../selectToDos';
 import ResizeMarker from './ResizeMarker';
 
-const ToDoList = () => {
+const ToDoList = observer(() => {
   const showRedactor = () => { TrigerUIState.switchShowedRedactor(true); };
   return (
     <div className="todolist-block" style={{ width: TrigerUIState.isStyleMobail ? '100%' : '50%' }}>
@@ -32,5 +33,5 @@ const ToDoList = () => {
       <SearchToDoItem />
     </div>
   );
-};
+});
 export default ToDoList;
